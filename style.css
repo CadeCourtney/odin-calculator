@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
+    background-color: darkslategray;
     margin: 10px;
     height: 100vh;
     min-height: 95vh;
@@ -15,12 +15,14 @@ body {
 
 .calc-container {
     border-radius: 8px;
+    padding: 5px;
     background-color: steelblue;
     border: 10px solid #F0F0F0;
     display: grid;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 100px);
     gap: 2px;
+    /* margin: 1px; */
 }
 
 .screen {
@@ -29,16 +31,20 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-end;
-    font-size: 5.5em;
+    font-size: 2em;
     margin: 5px;
     padding: 5px;
     background-color: #9bcd9b;
     text-shadow: 1.3px 1.3px black;
-    /* border-radius: 2px; */
+}
+
+.equation-empty {
+    height: 42.047px;
+    width: 37px;
 }
 
 button {
-    background-color: crimson;
+    /* background-color: crimson; */
     margin: 1px;
     border-radius: 5%;
     border: none;
@@ -47,6 +53,30 @@ button {
     font-family: monospace;
     color: black;
     cursor: pointer;
+}
+
+.number {
+    background-color: #89CFF0;
+}
+
+.number:active {
+    background-color: lightblue;
+}
+
+.op {
+    background-color: orange;
+}
+
+.op:active {
+    background-color: #FED8B1;
+}
+
+.top {
+    background-color: crimson;
+}
+
+.top:active {
+    background-color: red;
 }
 
 #zero {

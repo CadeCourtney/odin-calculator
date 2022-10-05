@@ -4,32 +4,36 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width"/>
         <link rel="stylesheet" href="./style.css"/>
-        <script src="./script.js"></script>
+        <!-- <script src="./script.js"></script> -->
     </head>
     <body>
         <div class="calc-container">
-            <div class="screen">0</div>
-                <button class="button" id="ac">AC</button>
-                <button class="button" id="del">DEL</button>
-                <button class="button" id="+-">+/-</button>
-                <button class="button" id="/">/</button>
-                <button class="button" id="1">1</button>
-                <button class="button" id="2">2</button>
-                <button class="button" id="3">3</button>
-                <button class="button" id="*">X</button>
-                <button class="button" id="4">4</button>
-                <button class="button" id="5">5</button>
-                <button class="button" id="6">6</button>
-                <button class="button" id="-">-</button>
-                <button class="button" id="7">7</button>
-                <button class="button" id="8">8</button>
-                <button class="button" id="9">9</button>
-                <button class="button" id="+">+</button>
-                <button class="button" id="zero">0</button>
-                <button class="button" id=".">.</button>
-                <button class="button" id="=">=</button>
+            <div class="screen">
+                <div class="equation"></div>
+                <div class="entered">0</div>
+            </div>
+                <button class="top" id="ac">AC</button>
+                <button class="top" id="del">DEL</button>
+                <button class="top" id="negative">+/-</button>
+                <button class="op" id="divide">/</button>
+                <button class="number" id="one">1</button>
+                <button class="number" id="two">2</button>
+                <button class="number" id="three">3</button>
+                <button class="op" id="multiply">X</button>
+                <button class="number" id="four">4</button>
+                <button class="number" id="five">5</button>
+                <button class="number" id="six">6</button>
+                <button class="op" id="minus">-</button>
+                <button class="number" id="seven">7</button>
+                <button class="number" id="eight">8</button>
+                <button class="number" id="nine">9</button>
+                <button class="op" id="plus">+</button>
+                <button class="number" id="zero">0</button>
+                <button class="number" id="decimal">.</button>
+                <button class="op" id="equal">=</button>
 
             </div>
         </div>
     </body>
+    <script src="./script.js"></script>
 </html>
