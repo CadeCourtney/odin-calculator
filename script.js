@@ -1,4 +1,7 @@
-let display = 0, num1 = 0, num2 = 0, operand, result, func, stack = [];
+let display = "", num1 = 0, num2 = 0, operand, result, func, stack = [];
+let equationScreen = document.getElementById("equation");
+let enteredScreen = document.getElementById("entered");
+
 let oneButton = document.getElementById("one");
 oneButton.onclick = () => numberClick(1);
 let twoButton = document.getElementById("two");
@@ -34,68 +37,110 @@ let equalButton = document.getElementById("equal");
 equalButton.onclick = () => operandClick("=");
 
 function numberClick(pressed) {
-    display = "";
+    // display = "";
     // if(stack.length == 2) {
     //     display += stack.pop();
     //     display += stack.pop();
     // }
     if(pressed == 1) {
         console.log('button 1 is pressed.');
-        // display = "1";
+        display += "1";
         stack.push("1");
     }
     else if(pressed == 2) {
         console.log('button 2 is pressed.');
+        display += "2";
         stack.push("2");
     }
     else if(pressed == 3) {
         console.log('button 3 is pressed.');
+        display += "3";
         stack.push("3");
     }
     else if(pressed == 4) {
         console.log('button 4 is pressed.');
+        display += "4";
         stack.push("4");
     }
     else if(pressed == 5) {
         console.log('button 5 is pressed.');
+        display += "5";
         stack.push("5");
     }
     else if(pressed == 6) {
         console.log('button 6 is pressed.');
+        display += "6";
         stack.push("6");
     }
     else if(pressed == 7) {
         console.log('button 7 is pressed.');
+        display += "7";
         stack.push("7");
     }
     else if(pressed == 8) {
         console.log('button 8 is pressed.');
+        display += "8";
         stack.push("8");
     }
     else if(pressed == 9) {
         console.log('button 9 is pressed.');
+        display += "9";
         stack.push("9");
     }
     else if(pressed == 0) {
         console.log('button 0 is pressed.');
+        display += "0";
         stack.push("0");
     }
+    entered.textContent = display;
 }
 
 function operandClick(op) {
+    entered.textContent = "0";
     console.log("symbol");
-    stack.push(op);
     // operand = op;
+    stack.forEach(element => display += element);
+    // display += " " + op + " ";
+    display += " " + op;
+    equationScreen.textContent = display;
+    display = " ";
+    stack.push(op);
     console.log(display);
-    func = function add(a, b) {
-        return a+b;
+}
+
+
+function chooseOperation(op) {
+    if(op == "+") {
+        func = function add(a, b) {
+            console.log("add");
+            return a + b;
+        };
+    }
+    if(op == "-") {
+        func = function subtract(a, b) {
+            console.log("sub");
+            return a - b;
+        }
+    }
+    if(op == "*") {
+        func = function multiply(a, b) {
+            console.log("mul");
+            return a * b;
+        }
+    }
+    if(op == "/") {
+        func = function divide(a, b) {
+            console.log("div");
+            if(b == 0) {
+        
+            }
+            return a / b;
+        }
     }
 }
 
-// function add(a, b) {
-//     console.log("add");
-//     return a + b;
-// }
+
+
 
 function subtract(a, b) {
     console.log("sub");
