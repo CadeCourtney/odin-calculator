@@ -1,4 +1,4 @@
-let display = "", num1 = "", num2 = "", operand, result, func, nums = [], bo = false;
+let display = "", num1 = "", num2 = "", operand, result, resetFlag = false;
 let equationScreen = document.getElementById("equation");
 let enteredScreen = document.getElementById("entered");
 
@@ -22,6 +22,9 @@ let nineButton = document.getElementById("nine");
 nineButton.onclick = () => numberClick(9);
 let zeroButton = document.getElementById("zero");
 zeroButton.onclick = () => numberClick(0);
+let decimalButton = document.getElementById("decimal");
+decimalButton.onclick = () => numberClick(".");
+
 
 let divButton = document.getElementById("divide");
 divButton.onclick = () => operandClick("/");
@@ -31,10 +34,8 @@ let minButton = document.getElementById("minus");
 minButton.onclick = () => operandClick("-");
 let plusButton = document.getElementById("plus");
 plusButton.onclick = () => operandClick("+");
-let decimalButton = document.getElementById("decimal");
-decimalButton.onclick = () => operandClick(".");
 let equalButton = document.getElementById("equal");
-equalButton.onclick = () => operandClick("=");
+equalButton.onclick = () => operate("=");
 
 let clearButton = document.getElementById("ac");
 clearButton.onclick = () => clear();
@@ -44,8 +45,8 @@ let negButton = document.getElementById("negative");
 // negButton.onclick = () => ;
 
 function numberClick(pressed) {
-    if(enteredScreen.textContent == "0") {
-        enteredScreen.textContent = "";
+    if(enteredScreen.textContent == "0" || resetFlag) {
+        reset();
     }
     if(pressed == 1) {
         console.log('button 1 is pressed.');
@@ -87,7 +88,28 @@ function numberClick(pressed) {
         console.log('button 0 is pressed.');
         enteredScreen.textContent += "0";
     }
+    else if(pressed = ".") {
+        if(enteredScreen.textContent.includes(".")) {
+            return
+        }
+        enteredScreen.textContent += ".";
+    }
 }
+
+function reset() {
+    enteredScreen.textContent = "";
+    resetFlag = false;
+}
+
+function clear() {
+    enteredScreen.textContent = "0";
+    equationScreen.textContent = "";
+    num1 = 0;
+    num2 = 0;
+    operand = null;
+    resetFlag = false;
+}
+
 
 function operandClick(operation) {
     if(operand !== null) {
@@ -96,24 +118,25 @@ function operandClick(operation) {
     num1 = enteredScreen.textContent;
     operand = operation;
     equationScreen.textContent = num1 + " " + operand;
-    // enteredScreen.textContent = "0";
+    resetFlag = true;
 }
 
 function operate() {
-    if(operand == null) {
+    if(operand == null || resetFlag) {
         return;
     }
     if (operand == '/' && enteredScreen.textContent == '0') {
         alert("You can't divide by 0!")
         return;
-      }
+    }
     num2 = enteredScreen.textContent;
     console.log("num1: " + num1 + " " + "num2: " + num2);
-    result = Math.round(arithmetic(operand, Number(num1), Number(num2)) * 1000) / 1000
-    enteredScreen.textContent = result;
-    equationScreen.textContent = num1 + " " + operand + " " + num2 + " =";
-    // num1 = num2;
-    operand = null
+    enteredScreen.textContent = Math.round(arithmetic(operand, Number(num1), Number(num2)) * 1000) / 1000;
+    // console.log(num1 + " " + operand + " " + num2 + " =");
+    var eString = num1 + " " + operand + " " + num2 + " =";
+    console.log(eString);
+    equationScreen.textContent = eString;
+    operand = null;
 }
 
 function add(a, b) {
@@ -143,8 +166,8 @@ function arithmetic(operator, a, b) {
     switch (operator) {
       case '+':
         return add(a, b)
-      case '−':
-        return substract(a, b)
+      case '-':
+        return subtract(a, b)
       case '*':
         return multiply(a, b)
       case '/':
