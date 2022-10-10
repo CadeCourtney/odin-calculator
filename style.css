@@ -1,6 +1,6 @@
-html {
+/* html {
     text-align: center;
-}
+} */
 
 body {
     display: flex;
@@ -22,7 +22,6 @@ body {
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(100px, auto) repeat(5, 100px);
     gap: 2px;
-    /* margin: 1px; */
 }
 
 .screen {
@@ -44,7 +43,6 @@ body {
 }
 
 button {
-    /* background-color: crimson; */
     margin: 1px;
     border-radius: 5%;
     border: none;
@@ -79,6 +77,6 @@ button {
     background-color: red;
 }
 
-#zero {
+.top {
     grid-column: span 2;
 }

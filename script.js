@@ -40,9 +40,7 @@ equalButton.onclick = () => operate("=");
 let clearButton = document.getElementById("ac");
 clearButton.onclick = () => clear();
 let delButton = document.getElementById("del");
-// delButton.onclick = () => ;
-let negButton = document.getElementById("negative");
-// negButton.onclick = () => ;
+delButton.onclick = () => del();
 
 function numberClick(pressed) {
     if(enteredScreen.textContent == "0" || resetFlag) {
@@ -110,6 +108,9 @@ function clear() {
     resetFlag = false;
 }
 
+function del() {
+    enteredScreen.textContent = enteredScreen.textContent.toString().slice(0, -1)
+}
 
 function operandClick(operation) {
     if(operand !== null) {
